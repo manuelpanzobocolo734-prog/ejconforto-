@@ -2,3 +2,39 @@
 style="display:block; padding:10px; background:#0a1a2f; color:white; width:100%; border:none;">
 Adicionar ao carrinho
 </button>
+<div id="carrinho" style="position:fixed; top:10px; right:10px; background:white; padding:15px; width:250px; box-shadow:0 0 10px rgba(0,0,0,0.2);">
+<h3>Carrinho 🛒</h3>
+<ul id="lista"></ul>
+
+<button onclick="finalizar()" style="width:100%; padding:10px; background:#0a1a2f; color:white;">
+Finalizar Pedido
+</button>
+</div>
+
+<script>
+let carrinho = [];
+
+function addCarrinho(nome, preco){
+carrinho.push({nome, preco});
+render();
+}
+
+function render(){
+let lista = document.getElementById("lista");
+lista.innerHTML = "";
+
+carrinho.forEach(p => {
+lista.innerHTML += `<li>${p.nome} - ${p.preco}</li>`;
+});
+}
+
+function finalizar(){
+let texto = "Pedido:%0A";
+
+carrinho.forEach(p => {
+texto += p.nome + " - " + p.preco + "%0A";
+});
+
+window.open("https://wa.me/244926341670?text=" + texto);
+}
+</script>
