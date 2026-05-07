@@ -1,40 +1,403 @@
-<button onclick="addCarrinho('${p.nome}', '${p.preco}')" 
-style="display:block; padding:10px; background:#0a1a2f; color:white; width:100%; border:none;">
-Adicionar ao carrinho
-</button>
-<div id="carrinho" style="position:fixed; top:10px; right:10px; background:white; padding:15px; width:250px; box-shadow:0 0 10px rgba(0,0,0,0.2);">
-<h3>Carrinho 🛒</h3>
-<ul id="lista"></ul>
 
-<button onclick="finalizar()" style="width:100%; padding:10px; background:#0a1a2f; color:white;">
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EJ Conforto</title>
+
+<style>
+
+body{
+margin:0;
+font-family:Arial;
+background:#f4f4f4;
+}
+
+/* HEADER */
+header{
+background:#0a1a2f;
+color:white;
+padding:15px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+header h1{
+margin:0;
+}
+
+/* HERO */
+.hero{
+height:350px;
+background:
+linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),
+url('banner.jpg');
+
+background-size:cover;
+background-position:center;
+
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+
+color:white;
+text-align:center;
+}
+
+.hero h2{
+font-size:40px;
+margin:0;
+}
+
+/* PRODUTOS */
+.produtos{
+padding:30px;
+}
+
+.grid{
+display:flex;
+flex-wrap:wrap;
+gap:20px;
+justify-content:center;
+}
+
+.card{
+background:white;
+width:260px;
+border-radius:10px;
+overflow:hidden;
+box-shadow:0 5px 15px rgba(0,0,0,0.1);
+transition:0.3s;
+}
+
+.card:hover{
+transform:scale(1.03);
+}
+
+.card img{
+width:100%;
+height:200px;
+object-fit:cover;
+}
+
+.card h3{
+padding:10px;
+margin:0;
+}
+
+.preco{
+padding:0 10px;
+font-size:20px;
+color:#d4af37;
+font-weight:bold;
+}
+
+.btn{
+display:block;
+margin:10px;
+padding:12px;
+background:#0a1a2f;
+color:white;
+border:none;
+width:calc(100% - 20px);
+border-radius:5px;
+font-size:16px;
+}
+
+/* CARRINHO */
+#carrinho{
+position:fixed;
+top:10px;
+right:10px;
+
+width:320px;
+max-height:500px;
+overflow:auto;
+
+background:white;
+padding:15px;
+
+border-radius:10px;
+box-shadow:0 5px 15px rgba(0,0,0,0.2);
+
+z-index:999;
+}
+
+#lista img{
+width:70px;
+height:70px;
+object-fit:cover;
+border-radius:5px;
+}
+
+.item{
+display:flex;
+gap:10px;
+margin-bottom:15px;
+border-bottom:1px solid #ddd;
+padding-bottom:10px;
+}
+
+.remove{
+background:red;
+color:white;
+border:none;
+padding:5px 10px;
+border-radius:5px;
+}
+
+/* FOOTER */
+footer{
+background:#0a1a2f;
+color:white;
+text-align:center;
+padding:20px;
+margin-top:40px;
+}
+
+/* WHATSAPP */
+.whatsapp{
+position:fixed;
+bottom:20px;
+left:20px;
+
+background:#25D366;
+color:white;
+
+padding:15px;
+border-radius:50%;
+
+font-size:24px;
+text-decoration:none;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>EJ Conforto</h1>
+<p>Emanuel e Josefina</p>
+</header>
+
+<section class="hero">
+<h2>Conforto que transforma o seu lar</h2>
+<p>Sofás nacionais de qualidade</p>
+</section>
+
+<section class="produtos">
+
+<h2 style="text-align:center;">Nossos Produtos</h2>
+
+<div class="grid" id="grid"></div>
+
+</section>
+
+<!-- CARRINHO -->
+<div id="carrinho">
+
+<h2>🛒 Carrinho</h2>
+
+<div id="lista"></div>
+
+<h3 id="total">
+Total: 0 Kz
+</h3>
+
+<button class="btn" onclick="finalizar()">
 Finalizar Pedido
 </button>
+
 </div>
 
+<!-- WHATSAPP -->
+<a class="whatsapp"
+href="https://wa.me/244926341670">
+💬
+</a>
+
+<footer>
+
+<p>📞 926 341 670</p>
+<p>📍 Luanda - Angola</p>
+
+</footer>
+
 <script>
+
+const produtos = [
+
+{
+nome:"Sofá Preto",
+preco:210000,
+img:"sofa-preto.jpg"
+},
+
+{
+nome:"Sofá Cinza",
+preco:180000,
+img:"sofa-cinza.jpg"
+},
+
+{
+nome:"Sofá Azul",
+preco:100000,
+img:"sofa-azul.jpg"
+},
+
+{
+nome:"Sofá Marrom",
+preco:180000,
+img:"sofa-marrom.jpg"
+},
+
+{
+nome:"Sofá Laranja",
+preco:180000,
+img:"sofa-laranja.jpg"
+}
+
+];
+
+let grid = document.getElementById("grid");
+
+produtos.forEach(p=>{
+
+grid.innerHTML += `
+
+<div class="card">
+
+<img src="${p.img}">
+
+<h3>${p.nome}</h3>
+
+<p class="preco">
+${p.preco.toLocaleString()} Kz
+</p>
+
+<button class="btn"
+onclick="addCarrinho('${p.nome}', ${p.preco}, '${p.img}')">
+
+Adicionar ao Carrinho
+
+</button>
+
+</div>
+
+`;
+
+});
+
 let carrinho = [];
 
-function addCarrinho(nome, preco){
-carrinho.push({nome, preco});
+function addCarrinho(nome, preco, img){
+
+carrinho.push({
+nome,
+preco,
+img
+});
+
 render();
+
 }
 
 function render(){
-let lista = document.getElementById("lista");
+
+let lista =
+document.getElementById("lista");
+
 lista.innerHTML = "";
 
-carrinho.forEach(p => {
-lista.innerHTML += `<li>${p.nome} - ${p.preco}</li>`;
+let total = 0;
+
+carrinho.forEach((p,index)=>{
+
+total += p.preco;
+
+lista.innerHTML += `
+
+<div class="item">
+
+<img src="${p.img}">
+
+<div>
+
+<h4>${p.nome}</h4>
+
+<p>
+${p.preco.toLocaleString()} Kz
+</p>
+
+<button class="remove"
+onclick="remover(${index})">
+
+Remover
+
+</button>
+
+</div>
+
+</div>
+
+`;
+
 });
+
+document.getElementById("total")
+.innerHTML =
+
+"Total: " +
+total.toLocaleString() +
+" Kz";
+
+}
+
+function remover(index){
+
+carrinho.splice(index,1);
+
+render();
+
 }
 
 function finalizar(){
-let texto = "Pedido:%0A";
 
-carrinho.forEach(p => {
-texto += p.nome + " - " + p.preco + "%0A";
+let texto =
+"🛒 Pedido EJ Conforto:%0A%0A";
+
+let total = 0;
+
+carrinho.forEach(p=>{
+
+texto +=
+p.nome +
+" - " +
+p.preco.toLocaleString() +
+" Kz%0A";
+
+total += p.preco;
+
 });
 
-window.open("https://wa.me/244926341670?text=" + texto);
+texto +=
+"%0A💰 Total: " +
+total.toLocaleString() +
+" Kz";
+
+window.open(
+
+"https://wa.me/244926341670?text=" + texto
+
+);
+
 }
+
 </script>
+
+</body>
+</html>
