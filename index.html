@@ -1,20 +1,28 @@
 <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>EJ Conforto | Sofás e Camas</title>
+<title>EJ Conforto | Sofás, Camas e Móveis em Angola</title>
 
 <meta name="description"
-content="EJ Conforto - Sofás, camas e móveis modernos em Angola">
+content="EJ Conforto - Loja online de sofás, camas e móveis modernos em Angola">
 
 <style>
 
-body{
+*{
 margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
 font-family:Arial,sans-serif;
-background:#f4f4f4;
+background:#f5f5f5;
+color:#222;
 }
 
 /* HEADER */
@@ -29,17 +37,25 @@ align-items:center;
 position:sticky;
 top:0;
 z-index:1000;
+box-shadow:0 5px 15px rgba(0,0,0,0.2);
 }
 
-header h1{
-margin:0;
+.logo{
 font-size:32px;
+font-weight:bold;
+}
+
+nav a{
+color:white;
+margin-left:20px;
+text-decoration:none;
+font-size:18px;
 }
 
 /* HERO */
 
 .hero{
-height:500px;
+height:550px;
 
 background:
 linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),
@@ -58,24 +74,44 @@ color:white;
 padding:20px;
 }
 
-.hero h2{
-font-size:50px;
-margin:0;
+.hero h1{
+font-size:60px;
+margin-bottom:20px;
 }
 
 .hero p{
-font-size:22px;
+font-size:24px;
+margin-bottom:30px;
+}
+
+.hero button{
+padding:15px 30px;
+background:#d4af37;
+border:none;
+font-size:18px;
+border-radius:10px;
+cursor:pointer;
+}
+
+/* PROMO */
+
+.promo{
+background:#d4af37;
+padding:15px;
+text-align:center;
+font-size:20px;
+font-weight:bold;
 }
 
 /* SECTIONS */
 
 section{
-padding:50px 20px;
+padding:60px 20px;
 }
 
 section h2{
 text-align:center;
-font-size:40px;
+font-size:42px;
 margin-bottom:40px;
 }
 
@@ -92,5 +128,625 @@ justify-content:center;
 
 .card{
 background:white;
-width:280px;
-border-radius:
+width:300px;
+border-radius:20px;
+overflow:hidden;
+box-shadow:0 10px 25px rgba(0,0,0,0.1);
+transition:0.3s;
+}
+
+.card:hover{
+transform:translateY(-10px);
+}
+
+.card img{
+width:100%;
+height:240px;
+object-fit:cover;
+}
+
+.card h3{
+padding:15px;
+font-size:24px;
+}
+
+.old{
+padding:0 15px;
+text-decoration:line-through;
+color:red;
+}
+
+.preco{
+padding:0 15px;
+font-size:26px;
+color:#d4af37;
+font-weight:bold;
+}
+
+.btn{
+display:block;
+margin:10px 15px;
+padding:14px;
+border:none;
+border-radius:10px;
+font-size:16px;
+cursor:pointer;
+width:calc(100% - 30px);
+}
+
+.cart{
+background:#0a1a2f;
+color:white;
+}
+
+.buy{
+background:#25D366;
+color:white;
+}
+
+/* CARRINHO */
+
+#carrinho{
+position:fixed;
+top:20px;
+right:20px;
+
+width:340px;
+max-height:500px;
+
+overflow:auto;
+
+background:white;
+padding:20px;
+
+border-radius:20px;
+
+box-shadow:0 10px 25px rgba(0,0,0,0.2);
+
+z-index:999;
+}
+
+#lista img{
+width:70px;
+height:70px;
+object-fit:cover;
+border-radius:10px;
+}
+
+.item{
+display:flex;
+gap:10px;
+margin-bottom:15px;
+border-bottom:1px solid #ddd;
+padding-bottom:10px;
+}
+
+.remove{
+background:red;
+color:white;
+border:none;
+padding:5px 10px;
+border-radius:5px;
+cursor:pointer;
+}
+
+/* BENEFÍCIOS */
+
+.beneficios{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:20px;
+}
+
+.beneficio{
+background:white;
+padding:30px;
+width:250px;
+text-align:center;
+border-radius:15px;
+box-shadow:0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* FOOTER */
+
+footer{
+background:#0a1a2f;
+color:white;
+padding:50px 20px;
+text-align:center;
+margin-top:50px;
+}
+
+footer p{
+margin-top:10px;
+}
+
+/* WHATSAPP */
+
+.whatsapp{
+position:fixed;
+bottom:20px;
+left:20px;
+
+background:#25D366;
+color:white;
+
+padding:18px;
+
+border-radius:50%;
+
+font-size:30px;
+text-decoration:none;
+
+box-shadow:0 5px 15px rgba(0,0,0,0.3);
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+
+<div class="logo">EJ Conforto</div>
+
+<nav>
+<a href="#">Início</a>
+<a href="#">Sofás</a>
+<a href="#">Camas</a>
+<a href="#">Móveis</a>
+</nav>
+
+</header>
+
+<section class="hero">
+
+<h1>Conforto e Elegância</h1>
+
+<p>Sofás, camas e móveis modernos em Angola</p>
+
+<button onclick="window.location='#produtos'">
+
+Ver Produtos
+
+</button>
+
+</section>
+
+<div class="promo">
+
+🔥 Promoção Especial da Semana 🔥
+
+</div>
+
+<!-- SOFÁS -->
+
+<section id="produtos">
+
+<h2>Nossos Sofás</h2>
+
+<div class="grid" id="gridSofas"></div>
+
+</section>
+
+<!-- CAMAS -->
+
+<section>
+
+<h2>Nossas Camas</h2>
+
+<div class="grid" id="gridCamas"></div>
+
+</section>
+
+<!-- BENEFÍCIOS -->
+
+<section>
+
+<h2>Por que escolher EJ Conforto?</h2>
+
+<div class="beneficios">
+
+<div class="beneficio">
+<h3>🚚 Entrega</h3>
+<p>Entregamos em Luanda</p>
+</div>
+
+<div class="beneficio">
+<h3>🛋️ Qualidade</h3>
+<p>Móveis modernos e resistentes</p>
+</div>
+
+<div class="beneficio">
+<h3>💬 Atendimento</h3>
+<p>Atendimento rápido no WhatsApp</p>
+</div>
+
+</div>
+
+</section>
+
+<!-- CARRINHO -->
+
+<div id="carrinho">
+
+<h2>🛒 Carrinho</h2>
+
+<div id="lista"></div>
+
+<h3 id="total">
+
+Total: 0 Kz
+
+</h3>
+
+<button class="btn cart"
+onclick="finalizar()">
+
+Finalizar Pedido
+
+</button>
+
+</div>
+
+<!-- WHATSAPP -->
+
+<a class="whatsapp"
+href="https://wa.me/244926341670">
+
+💬
+
+</a>
+
+<footer>
+
+<h2>EJ Conforto</h2>
+
+<p>📞 WhatsApp: 926 341 670</p>
+
+<p>📍 Luanda - Angola</p>
+
+<p>Conforto • Elegância • Qualidade</p>
+
+</footer>
+
+<script>
+
+/* SOFÁS */
+
+const sofas = [
+
+{
+nome:"Sofá Preto",
+preco:210000,
+promo:190000,
+img:"sofa-preto.jpg"
+},
+
+{
+nome:"Sofá Cinza",
+preco:180000,
+promo:160000,
+img:"sofa-cinza.jpg"
+},
+
+{
+nome:"Sofá Azul",
+preco:100000,
+promo:90000,
+img:"sofa-azul.jpg"
+},
+
+{
+nome:"Sofá Marrom",
+preco:180000,
+promo:160000,
+img:"sofa-marrom.jpg"
+},
+
+{
+nome:"Sofá Laranja",
+preco:180000,
+promo:165000,
+img:"sofa-laranja.jpg"
+},
+
+{
+nome:"Sofá Encomenda",
+preco:170000,
+promo:150000,
+img:"sofa-encomenda.jpg"
+}
+
+];
+
+/* CAMAS */
+
+const camas = [
+
+{
+nome:"Cama Encomenda",
+preco:45000,
+promo:40000,
+img:"cama-encomenda.jpg"
+},
+
+{
+nome:"Cama King",
+preco:70000,
+promo:65000,
+img:"cama-king.jpg"
+},
+
+{
+nome:"Cama Luxo",
+preco:80000,
+promo:75000,
+img:"cama-luxo.jpg"
+}
+
+];
+
+function renderProdutos(lista, gridId){
+
+let grid =
+document.getElementById(gridId);
+
+lista.forEach(p=>{
+
+grid.innerHTML += `
+
+<div class="card">
+
+<img src="${p.img}">
+
+<h3>${p.nome}</h3>
+
+<p class="old">
+
+${p.preco.toLocaleString()} Kz
+
+</p>
+
+<p class="preco">
+
+${p.promo.toLocaleString()} Kz
+
+</p>
+
+<button class="btn cart"
+
+onclick="addCarrinho('${p.nome}', ${p.promo}, '${p.img}')">
+
+Adicionar ao Carrinho
+
+</button>
+
+<button class="btn buy"
+
+onclick="comprarAgora('${p.nome}', ${p.promo})">
+
+Comprar Agora
+
+</button>
+
+</div>
+
+`;
+
+});
+
+}
+
+renderProdutos(sofas,"gridSofas");
+renderProdutos(camas,"gridCamas");
+
+/* CARRINHO */
+
+let carrinho = [];
+
+function addCarrinho(nome, preco, img){
+
+let existente =
+carrinho.find(p=>p.nome===nome);
+
+if(existente){
+
+existente.qtd++;
+
+}else{
+
+carrinho.push({
+
+nome,
+preco,
+img,
+qtd:1
+
+});
+
+}
+
+render();
+
+}
+
+function aumentar(index){
+
+carrinho[index].qtd++;
+
+render();
+
+}
+
+function diminuir(index){
+
+if(carrinho[index].qtd > 1){
+
+carrinho[index].qtd--;
+
+}else{
+
+carrinho.splice(index,1);
+
+}
+
+render();
+
+}
+
+function render(){
+
+let lista =
+document.getElementById("lista");
+
+lista.innerHTML = "";
+
+let total = 0;
+
+carrinho.forEach((p,index)=>{
+
+let subtotal =
+p.preco * p.qtd;
+
+total += subtotal;
+
+lista.innerHTML += `
+
+<div class="item">
+
+<img src="${p.img}">
+
+<div>
+
+<h4>${p.nome}</h4>
+
+<p>
+
+${p.preco.toLocaleString()} Kz
+
+</p>
+
+<div style="
+display:flex;
+align-items:center;
+gap:10px;
+">
+
+<button class="remove"
+
+onclick="diminuir(${index})">
+
+-
+
+</button>
+
+<span>${p.qtd}</span>
+
+<button class="remove"
+
+onclick="aumentar(${index})">
+
++
+
+</button>
+
+</div>
+
+<p>
+
+Subtotal:
+${subtotal.toLocaleString()} Kz
+
+</p>
+
+</div>
+
+</div>
+
+`;
+
+});
+
+document.getElementById("total")
+.innerHTML =
+
+"Total: " +
+total.toLocaleString() +
+" Kz";
+
+}
+
+function finalizar(){
+
+let texto =
+"🛒 Pedido EJ Conforto:%0A%0A";
+
+let total = 0;
+
+carrinho.forEach(p=>{
+
+let subtotal =
+p.preco * p.qtd;
+
+texto +=
+
+p.nome +
+
+" | Quantidade: " +
+
+p.qtd +
+
+" | " +
+
+subtotal.toLocaleString() +
+
+" Kz%0A";
+
+total += subtotal;
+
+});
+
+texto +=
+
+"%0A💰 Total: " +
+
+total.toLocaleString() +
+
+" Kz";
+
+window.open(
+
+"https://wa.me/244926341670?text=" + texto
+
+);
+
+}
+
+function comprarAgora(nome, preco){
+
+let texto =
+
+"Olá EJ Conforto, quero comprar:%0A%0A" +
+
+nome +
+
+"%0A💰 Preço promocional: " +
+
+preco.toLocaleString() +
+
+" Kz";
+
+window.open(
+
+"https://wa.me/244926341670?text=" + texto
+
+);
+
+}
+
+</script>
+
+</body>
+</html>
