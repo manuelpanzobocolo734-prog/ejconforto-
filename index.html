@@ -1,17 +1,19 @@
-
 <!DOCTYPE html>
 <html lang="pt">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>EJ Conforto</title>
+<title>EJ Conforto | Sofás e Camas</title>
+
+<meta name="description"
+content="EJ Conforto - Sofás, camas e móveis modernos em Angola">
 
 <style>
 
 body{
 margin:0;
-font-family:Arial, sans-serif;
+font-family:Arial,sans-serif;
 background:#f4f4f4;
 }
 
@@ -65,17 +67,19 @@ margin:0;
 font-size:22px;
 }
 
-/* PRODUTOS */
+/* SECTIONS */
 
-.produtos{
+section{
 padding:50px 20px;
 }
 
-.produtos h2{
+section h2{
 text-align:center;
 font-size:40px;
 margin-bottom:40px;
 }
+
+/* GRID */
 
 .grid{
 display:flex;
@@ -84,403 +88,9 @@ gap:25px;
 justify-content:center;
 }
 
+/* CARD */
+
 .card{
 background:white;
 width:280px;
-border-radius:15px;
-overflow:hidden;
-box-shadow:0 10px 20px rgba(0,0,0,0.1);
-transition:0.3s;
-}
-
-.card:hover{
-transform:translateY(-10px);
-}
-
-.card img{
-width:100%;
-height:220px;
-object-fit:cover;
-}
-
-.card h3{
-padding:10px;
-margin:0;
-font-size:24px;
-}
-
-.preco{
-padding:0 10px;
-font-size:22px;
-color:#d4af37;
-font-weight:bold;
-}
-
-.btn{
-display:block;
-margin:15px;
-padding:14px;
-background:#0a1a2f;
-color:white;
-border:none;
-border-radius:8px;
-font-size:16px;
-cursor:pointer;
-width:calc(100% - 30px);
-}
-
-/* CARRINHO */
-
-#carrinho{
-position:fixed;
-top:20px;
-right:20px;
-
-width:330px;
-max-height:500px;
-
-overflow:auto;
-
-background:white;
-padding:15px;
-
-border-radius:15px;
-
-box-shadow:0 10px 20px rgba(0,0,0,0.2);
-
-z-index:999;
-}
-
-#lista img{
-width:70px;
-height:70px;
-object-fit:cover;
-border-radius:8px;
-}
-
-.item{
-display:flex;
-gap:10px;
-margin-bottom:15px;
-border-bottom:1px solid #ddd;
-padding-bottom:10px;
-}
-
-.remove{
-background:red;
-color:white;
-border:none;
-padding:6px 10px;
-border-radius:5px;
-cursor:pointer;
-}
-
-/* FOOTER */
-
-footer{
-background:#0a1a2f;
-color:white;
-padding:40px;
-text-align:center;
-margin-top:50px;
-}
-
-/* WHATSAPP */
-
-.whatsapp{
-position:fixed;
-bottom:20px;
-left:20px;
-
-background:#25D366;
-color:white;
-
-padding:18px;
-
-border-radius:50%;
-
-font-size:28px;
-text-decoration:none;
-
-box-shadow:0 5px 15px rgba(0,0,0,0.3);
-}
-
-</style>
-</head>
-
-<body>
-
-<header>
-
-<h1>EJ Conforto</h1>
-
-<p>Emanuel e Josefina</p>
-
-</header>
-
-<section class="hero">
-
-<h2>Conforto que transforma o seu lar</h2>
-
-<p>Sofás nacionais modernos e elegantes</p>
-
-</section>
-
-<section class="produtos">
-
-<h2>Nossos Sofás</h2>
-
-<div class="grid" id="grid"></div>
-
-</section>
-
-<!-- CARRINHO -->
-
-<div id="carrinho">
-
-<h2>🛒 Carrinho</h2>
-
-<div id="lista"></div>
-
-<h3 id="total">
-
-Total: 0 Kz
-
-</h3>
-
-<button class="btn" onclick="finalizar()">
-
-Finalizar Pedido
-
-</button>
-
-</div>
-
-<!-- WHATSAPP -->
-
-<a class="whatsapp"
-href="https://wa.me/244926341670">
-
-💬
-
-</a>
-
-<footer>
-
-<h2>EJ Conforto</h2>
-
-<p>📞 WhatsApp: 926 341 670</p>
-
-<p>📍 Luanda - Angola</p>
-
-<p>Conforto • Elegância • Qualidade</p>
-
-</footer>
-
-<script>
-
-const produtos = [
-
-{
-nome:"Sofá Preto",
-preco:210000,
-img:"sofa-preto.jpg"
-},
-
-{
-nome:"Sofá Cinza",
-preco:180000,
-img:"sofa-cinza.jpg"
-},
-
-{
-nome:"Sofá Azul",
-preco:100000,
-img:"sofa-azul.jpg"
-},
-
-{
-nome:"Sofá Marrom",
-preco:180000,
-img:"sofa-marrom.jpg"
-},
-{
-nome:"Cama Encomenda",
-preco:350000,
-img:"cama-encomenda.jpg"
-},
-
-{
-nome:"Cama King",
-preco:450000,
-img:"cama-king.jpg"
-},
-
-{
-nome:"Cama Luxo",
-preco:400000,
-img:"cama-luxo.jpg"
-},
-
-{
-nome:"Sofá Azul",
-preco:100000,
-img:"sofa-azul.jpg"
-{
-nome:"Sofá Laranja",
-preco:180000,
-img:"sofa-laranja.jpg"
-}
-
-];
-
-let grid =
-document.getElementById("grid");
-
-produtos.forEach(p=>{
-
-grid.innerHTML += `
-
-<div class="card">
-
-<img src="${p.img}">
-
-<h3>${p.nome}</h3>
-
-<p class="preco">
-
-${p.preco.toLocaleString()} Kz
-
-</p>
-
-<button class="btn"
-
-onclick="addCarrinho('${p.nome}', ${p.preco}, '${p.img}')">
-
-Adicionar ao Carrinho
-
-</button>
-
-</div>
-
-`;
-
-});
-
-let carrinho = [];
-
-function addCarrinho(nome, preco, img){
-
-carrinho.push({
-
-nome,
-preco,
-img
-
-});
-
-render();
-
-}
-
-function render(){
-
-let lista =
-document.getElementById("lista");
-
-lista.innerHTML = "";
-
-let total = 0;
-
-carrinho.forEach((p,index)=>{
-
-total += p.preco;
-
-lista.innerHTML += `
-
-<div class="item">
-
-<img src="${p.img}">
-
-<div>
-
-<h4>${p.nome}</h4>
-
-<p>
-
-${p.preco.toLocaleString()} Kz
-
-</p>
-
-<button class="remove"
-
-onclick="remover(${index})">
-
-Remover
-
-</button>
-
-</div>
-
-</div>
-
-`;
-
-});
-
-document.getElementById("total")
-.innerHTML =
-
-"Total: " +
-total.toLocaleString() +
-" Kz";
-
-}
-
-function remover(index){
-
-carrinho.splice(index,1);
-
-render();
-
-}
-
-function finalizar(){
-
-let texto =
-"🛒 Pedido EJ Conforto:%0A%0A";
-
-let total = 0;
-
-carrinho.forEach(p=>{
-
-texto +=
-p.nome +
-" - " +
-p.preco.toLocaleString() +
-" Kz%0A";
-
-total += p.preco;
-
-});
-
-texto +=
-
-"%0A💰 Total: " +
-
-total.toLocaleString() +
-
-" Kz";
-
-window.open(
-
-"https://wa.me/244926341670?text=" + texto
-
-);
-
-}
-
-</script>
-
-</body>
-</html>
+border-radius:
