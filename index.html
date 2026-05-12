@@ -964,7 +964,40 @@ Pedir Orçamento
 <p>📍 Luanda - Angola</p>
 
 <p>🚚 Entregamos em Luanda e outras províncias</p>
+<section style="padding:40px 20px;background:#f7f7f7;text-align:center;">
+<h2>🛠 Fazer Encomenda Personalizada</h2>
+<p>Escolha o modelo que deseja fabricar.</p>
 
+<div style="max-width:500px;margin:auto;display:flex;flex-direction:column;gap:12px;">
+
+<input id="nome" placeholder="Seu nome" style="padding:12px;border:1px solid #ccc;border-radius:8px;">
+
+<input id="produto" placeholder="Produto desejado" style="padding:12px;border:1px solid #ccc;border-radius:8px;">
+
+<input id="cor" placeholder="Cor" style="padding:12px;border:1px solid #ccc;border-radius:8px;">
+
+<textarea id="obs" placeholder="Detalhes do pedido" style="padding:12px;height:100px;border:1px solid #ccc;border-radius:8px;"></textarea>
+
+<button onclick="enviarPedido()"
+style="background:#25D366;color:white;padding:14px;border:none;border-radius:8px;font-size:18px;">
+Enviar Pedido
+</button>
+
+</div>
+</section>
+
+<script>
+function enviarPedido(){
+let n=document.getElementById("nome").value;
+let p=document.getElementById("produto").value;
+let c=document.getElementById("cor").value;
+let o=document.getElementById("obs").value;
+
+let txt="Olá EJ Conforto%0A%0ANome: "+n+"%0AProduto: "+p+"%0ACor: "+c+"%0ADetalhes: "+o;
+
+window.open("https://wa.me/244941681965?text="+txt);
+}
+</script>
 </div>
 </div>
 </section>
