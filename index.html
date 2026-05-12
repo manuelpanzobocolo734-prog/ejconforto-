@@ -996,7 +996,101 @@ let o=document.getElementById("obs").value;
 let txt="Olá EJ Conforto%0A%0ANome: "+n+"%0AProduto: "+p+"%0ACor: "+c+"%0ADetalhes: "+o;
 
 window.open("https://wa.me/244941681965?text="+txt);
+}<section style="padding:40px 20px;background:white;text-align:center;">
+
+<h2>🔍 Pesquisar Produto</h2>
+
+<input type="text" id="pesquisa"
+placeholder="Ex: sofá, cama..."
+onkeyup="filtrarProdutos()"
+style="padding:12px;width:80%;max-width:500px;border:1px solid #ccc;border-radius:8px;">
+
+</section>
+
+<section style="padding:40px 20px;background:#f7f7f7;text-align:center;">
+
+<h2>⭐ Mais Vendidos</h2>
+
+<div class="grid">
+
+<div class="card">
+<img src="sofa-preto.jpg">
+<h3>Sofá Preto</h3>
+<p class="preco">190.000 Kz</p>
+</div>
+
+<div class="card">
+<img src="cama-king.jpg">
+<h3>Cama King</h3>
+<p class="preco">65.000 Kz</p>
+</div>
+
+</div>
+
+</section>
+
+<section style="padding:40px 20px;background:white;text-align:center;">
+
+<h2>📸 Galeria</h2>
+
+<div class="grid" id="galeria">
+
+<div class="card produto">
+<img src="sofa-preto.jpg">
+<h3>Sofá Preto</h3>
+</div>
+
+<div class="card produto">
+<img src="sofa-cinza.jpg">
+<h3>Sofá Cinza</h3>
+</div>
+
+<div class="card produto">
+<img src="sofa-azul.jpg">
+<h3>Sofá Azul</h3>
+</div>
+
+<div class="card produto">
+<img src="cama-encomenda.jpg">
+<h3>Cama Encomenda</h3>
+</div>
+
+<div class="card produto">
+<img src="cama-king.jpg">
+<h3>Cama King</h3>
+</div>
+
+<div class="card produto">
+<img src="cama-luxo.jpg">
+<h3>Cama Luxo</h3>
+</div>
+
+</div>
+
+<div style="margin-top:20px;">
+<button onclick="mostrarTudo()"
+style="background:#0a1a2f;color:white;padding:15px 25px;border:none;border-radius:8px;font-size:18px;">
+Ver Todos os Móveis
+</button>
+</div>
+
+</section>
+
+<script>
+function mostrarTudo(){
+window.location.href="#galeria";
 }
+
+function filtrarProdutos(){
+let input=document.getElementById("pesquisa").value.toLowerCase();
+let produtos=document.querySelectorAll(".produto");
+
+produtos.forEach(p=>{
+let nome=p.innerText.toLowerCase();
+p.style.display=nome.includes(input)?"block":"none";
+});
+}
+</script>
 </script>
 </div>
 </div>
