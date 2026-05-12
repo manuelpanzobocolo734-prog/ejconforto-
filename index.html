@@ -1088,7 +1088,20 @@ let produtos=document.querySelectorAll(".produto");
 produtos.forEach(p=>{
 let nome=p.innerText.toLowerCase();
 p.style.display=nome.includes(input)?"block":"none";
-});
+<section style="padding:40px 20px;text-align:center;background:#fff;">
+<h2>📸 Galeria de Produtos</h2>
+
+<div style="display:flex;flex-wrap:wrap;justify-content:center;gap:20px;">
+
+<img src="sofa-preto.jpg" style="width:220px;border-radius:10px;">
+<img src="sofa-cinza.jpg" style="width:220px;border-radius:10px;">
+<img src="sofa-azul.jpg" style="width:220px;border-radius:10px;">
+<img src="cama-encomenda.jpg" style="width:220px;border-radius:10px;">
+<img src="cama-king.jpg" style="width:220px;border-radius:10px;">
+<img src="cama-luxo.jpg" style="width:220px;border-radius:10px;">
+
+</div>
+</section>);
 }
 </script>
 </script>
